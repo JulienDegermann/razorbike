@@ -1,0 +1,35 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+header, header nav.navbar {
+  height: auto;
+  background: url("images/contact2.jpg") no-repeat 0 -200px;
+  background-size: cover;
+  border-radius: 0 0 10px 10px;
+  border: red 10px solid;
+}
+@media screen and (min-width: 1024px) {
+  header, header nav.navbar {
+    height: 50px;
+    background-position: 0 -100px;
+  }
+}
+header nav.navbar {
+  height: 40vh;
+  background-color: red;
+  border: blue 20px solid;
+}
+header nav.navbara.navbar-brand.fs-1 {
+  font-size: 200rem !important;
+  color: blue;
+}
+header nav.navbarbutton.position {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}/*# sourceMappingURL=style.css.map */
