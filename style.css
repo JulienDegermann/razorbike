@@ -1,35 +1,87 @@
-body,
-html {
+/*
+------------------------------------------------------ 
+MIXINS / KEYFRAMES / INCLUDES / VARIABLES
+------------------------------------------------------ 
+*/
+/*
+------------------------------------------------------ 
+VISIBILITY
+------------------------------------------------------ 
+*/
+.border-red {
+  border: red 2px solid;
+}
+
+/*
+------------------------------------------------------ 
+RESET ALL
+------------------------------------------------------ 
+*/
+html,
+body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
+  background: #000;
 }
 
-header, header nav.navbar {
-  height: auto;
+* {
+  list-style: none;
+  text-decoration: none;
+}
+
+/*
+------------------------------------------------------ 
+HEADER
+------------------------------------------------------ 
+*/
+header {
+  height: 40%;
   background: url("images/contact2.jpg") no-repeat 0 -200px;
   background-size: cover;
-  border-radius: 0 0 10px 10px;
-  border: red 10px solid;
+  box-shadow: 0 5px 35px black;
 }
 @media screen and (min-width: 1024px) {
-  header, header nav.navbar {
+  header {
     height: 50px;
     background-position: 0 -100px;
   }
 }
+header .menu-toggle {
+  background: transparent;
+  color: #fff;
+  border: none;
+  box-shadow: 10px 1px0 10px black;
+}
 header nav.navbar {
   height: 40vh;
-  background-color: red;
-  border: blue 20px solid;
 }
 header nav.navbara.navbar-brand.fs-1 {
-  font-size: 200rem !important;
+  font-size: 200rem;
   color: blue;
 }
 header nav.navbarbutton.position {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main-content .main-title {
+  font-size: 4rem;
+  color: orangered;
+  margin: 0;
+}
+.main-content .subtitle {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

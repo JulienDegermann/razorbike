@@ -1,29 +1,78 @@
-body,
-html {
+/*
+------------------------------------------------------ 
+MIXINS / KEYFRAMES / INCLUDES / VARIABLES
+------------------------------------------------------ 
+*/
+$blue: #3491b2;
+$white:#fff;
+$black: #000;
+$fonts:'Roboto Condensed', sans-serif;
+$dark-gray: darkgray;
+$lightgray: lightgray;
+$orange: orangered;
+
+@mixin flex ($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    width: 100%;
+    height: 100%;
+}
+/*
+------------------------------------------------------ 
+VISIBILITY
+------------------------------------------------------ 
+*/
+.border-red {
+    border:red 2px solid;
+}
+
+/*
+------------------------------------------------------ 
+RESET ALL
+------------------------------------------------------ 
+*/
+html,
+body {
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
+    background: $black;
+}
+* {
+    list-style: none;
+    text-decoration: none;
 }
 
+
+
+/*
+------------------------------------------------------ 
+HEADER
+------------------------------------------------------ 
+*/
 header {
-    height: auto;
+    height: 40%;
     background: url("images/contact2.jpg") no-repeat 0 -200px;
     background-size: cover;
-    border-radius: 0 0 10px 10px;
-    border: red 10px solid;
+    box-shadow: 0 5px 35px black;
     @media screen and (min-width: 1024px) {
         height: 50px;
         background-position: 0 -100px;
     }
-
+    .menu-toggle {
+        background: transparent;
+        color: $white;
+        border: none;
+        box-shadow: 10px 1px0 10px black;
+    }
     nav.navbar {
+        @extend .navbar;
         height: 40vh;
-        background-color: red;
-        @extend header;
-        border: blue 20px solid;
         &a.navbar-brand.fs-1{
-            font-size: 200rem !important;
+            font-size: 200rem;
             color:blue;
         }
         &button.position {
@@ -31,5 +80,19 @@ header {
             top: 10px;
             right: 10px;
         }
+    }
+}
+
+.main-content {
+    @include flex(column, flex-start, center);
+    .main-title {
+        font-size: 4rem;
+        color: $orange;
+        margin: 0;
+    }
+    .subtitle {
+        font-size: 2rem;
+        color: $white;
+        margin: 0;
     }
 }
