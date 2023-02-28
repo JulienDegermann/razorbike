@@ -53,36 +53,35 @@ body {
 HEADER
 ------------------------------------------------------ 
 */
-header {
-    height: 40%;
+.navbar {
+    @include flex(row, center, flex-end);
     background: url("images/contact2.jpg") no-repeat 0 -200px;
     background-size: cover;
+    height: 50%;
     box-shadow: 0 5px 35px black;
+    position: relative;
     @media screen and (min-width: 1024px) {
         height: 50px;
         background-position: 0 -100px;
     }
     .menu-toggle {
+        position: absolute;
+        right: 20px;
+        top: 20px;
         background: transparent;
         color: $white;
         border: none;
         box-shadow: 10px 1px0 10px black;
     }
-    nav.navbar {
-        @extend .navbar;
-        height: 40vh;
-        &a.navbar-brand.fs-1{
-            font-size: 200rem;
-            color:blue;
-        }
-        &button.position {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
+    .main-title {
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        color: $white;
+        font-size: 4rem;
+        margin: 0;
     }
 }
-
 .main-content {
     @include flex(column, flex-start, center);
     .main-title {

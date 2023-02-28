@@ -36,35 +36,41 @@ body {
 HEADER
 ------------------------------------------------------ 
 */
-header {
-  height: 40%;
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
   background: url("images/contact2.jpg") no-repeat 0 -200px;
   background-size: cover;
+  height: 50%;
   box-shadow: 0 5px 35px black;
+  position: relative;
 }
 @media screen and (min-width: 1024px) {
-  header {
+  .navbar {
     height: 50px;
     background-position: 0 -100px;
   }
 }
-header .menu-toggle {
+.navbar .menu-toggle {
+  position: absolute;
+  right: 20px;
+  top: 20px;
   background: transparent;
   color: #fff;
   border: none;
   box-shadow: 10px 1px0 10px black;
 }
-header nav.navbar {
-  height: 40vh;
-}
-header nav.navbara.navbar-brand.fs-1 {
-  font-size: 200rem;
-  color: blue;
-}
-header nav.navbarbutton.position {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.navbar .main-title {
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 4rem;
+  margin: 0;
 }
 
 .main-content {
