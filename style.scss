@@ -16,8 +16,33 @@ $orange: orangered;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
-    width: 100%;
-    height: 100%;
+}
+
+
+
+@keyframes rotate {
+from {
+    transform: translateX(-200%);
+    transform: rorate(0deg);
+}
+to{
+    transform: rotate(45deg);
+    transform: translateX(200%);
+}
+}
+@keyframes left-right {
+    from { transform: translateX(-200%), rotate(0deg);
+    }
+    to {
+        transform: translateX(200%), rotate(45deg);
+    }
+}
+@keyframes move-down {
+    from { transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
 }
 /*
 ------------------------------------------------------ 
@@ -35,13 +60,15 @@ RESET ALL
 */
 html,
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    height: 100%;
     background: $black;
+    font-family: 'Anton', sans-serif;
 }
 * {
+    margin: 0;
+    padding: 0;
+    color: $white;
     list-style: none;
     text-decoration: none;
 }
@@ -55,11 +82,20 @@ HEADER
 */
 .navbar {
     @include flex(row, center, flex-end);
-    background: url("images/contact2.jpg") no-repeat 0 -200px;
-    background-size: cover;
+    position: relative;
+    width: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 80%);
+    /* CHANGE BG, REPLACE WITH MORE RECENT PICTURE */
     height: 50%;
     box-shadow: 0 5px 35px black;
-    position: relative;
+    .navbar-bg {
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
     @media screen and (min-width: 1024px) {
         height: 50px;
         background-position: 0 -100px;
@@ -68,30 +104,127 @@ HEADER
         position: absolute;
         right: 20px;
         top: 20px;
-        background: transparent;
+        border-radius: 10px;
+        background: none;
         color: $white;
         border: none;
-        box-shadow: 10px 1px0 10px black;
     }
     .main-title {
-        bottom: 0;
-        left: 0;
+        @include flex(row, center, flex-end);
         text-align: center;
         color: $white;
-        font-size: 4rem;
-        margin: 0;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        position: relative;
+        text-transform: uppercase;
+        font-family: 'Shantell Sans', 'Roboto Condensed', cursive, sans-serif;
+        @media screen and (min-width: 300px) {
+            font-size: 2rem;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 1.5rem;
+            background: url("images/favicon.ico") no-repeat;
+            display: block;
+            background-size: contain;
+            width: 3rem;
+            height: 3rem;
+        }
     }
 }
 .main-content {
-    @include flex(column, flex-start, center);
-    .main-title {
-        font-size: 4rem;
-        color: $orange;
-        margin: 0;
+    @include flex(column, space-around, center);
+    max-width: 100%;
+    height: 50%;
+    .location {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        height: 10%;
+        font-size: 1rem;
+        overflow: hidden;
+        font-family: 'Shantell Sans', 'Roboto Condensed', cursive, sans-serif;
+        font-weight: 100;
+        span{
+            animation: move-down .25s .3s linear ;
+            text-align: center;
+            @media screen and (min-width: 370px) {
+                font-size: 1.5rem;
+            }
+        }
     }
     .subtitle {
-        font-size: 2rem;
+        position: relative;
+        font-family: 'Tilt Warp', cursive; 
+        font-size: 3.5rem;
         color: $white;
-        margin: 0;
+        text-transform: uppercase;
+        text-align: justify;
+        width: 90%;
+        margin-left: 1%;
+        margin-right: 1%;
+        overflow: hidden;
+        height: 60%;
+        
+        span {
+            padding: 1% 2%;
+            animation: move-down .25s .5s linear ;
+            margin-left: 2%;
+            margin-right: 2%;
+            @media screen and (min-width: 370px) {
+                margin-left: 5%;
+                margin-right: 5%;
+                font-size: 4.8rem;
+            }
+        }
+    }
+    .location span,
+    .subtitle span {
+        position: absolute;
+        width: 100%;
+        bottom: 100%;
+        left: 0;
+        animation-fill-mode: forwards;
+    }
+    ul {
+        @include flex(row, center, center);
+        width: 90%;
+        margin-bottom: 10%;
+        position: relative;
+        &::after {
+            /*content: url('images/bike.svg');*/
+            content:'';
+            display: block;
+            background-color: white;
+            position: absolute;
+            top: -170%;
+            height: 50px;
+            width: 50px;
+            -webkit-mask: url(images/bike.svg) no-repeat;
+            mask: url(images/bike.svg) no-repeat;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            animation: left-right 5s, infinite;
+
+        }
+        li {
+            padding: 1% 1%;
+            width: fit-content;
+            border-top: 3px solid transparent;
+            text-transform: uppercase;
+            font-size: .7rem;
+            transition: border-top .3s linear;
+            text-align: center;
+            @media screen and (min-width: 360px) {
+                font-size: .8rem;
+                padding: 1% 2%;;
+            }
+            &:hover {
+                border-top: 3px solid $white;
+                transition: border-top .3s linear;
+            }
+        }
     }
 }
+    

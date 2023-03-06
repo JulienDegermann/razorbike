@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr" >
+<html lang="fr">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Climate+Crisis&family=Rampart+One&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Shantell+Sans:wght@400;700&family=Tilt+Warp&display=swap" rel="stylesheet">
 	<title>Team Razorbike : Association VTT Sulniac</title>
 	<meta name="description" content="L'association VTT Team Razorbike regroupe 
 	des passionnés de VTT cherchant une pratique engagée, principalement autour de Sulniac.
 	Nous n'hésitons pas à participer à différentes randonnées organisées par les clubs du département.
 	Nous sommes présents tous les ans au forum des associations de notre commune.">
+	<link rel="icon" href="images/favicon.ico">
 </head>
 <body>
 	<!-- 
@@ -16,7 +20,12 @@
 	HEADER WITH NAVBAR
 	------------------------------------------------------------------------
 	-->
+
+	<!-- ADD BOOTSTRAP FOR MENU WITH CDN JS -->
 	<header class="navbar">
+		<figure>
+			<img class="navbar-bg" src="images/cover.jpg" alt="background vtt">
+		</figure>
 		<nav class="navmenu">
 			<button type="button" class="menu-toggle">
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -24,10 +33,16 @@
 					d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 				</svg>
 			</button>
+			<!-- <ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="asso.html">L'association</a></li>
+				<li><a href="events.html">Évènements</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul> -->
 			<div class="">
 			</div>		
 		</nav>
-		<a href="index.html" class="title-link"><h1 class="main-title">Team Razorbike</h1></a>
+		<h1 class="main-title"><a href="index.html" class="title-link">Team Razorbike</a></h1>
 	</header>
 
 	<!-- 
@@ -36,8 +51,19 @@
 	------------------------------------------------------------------------
 	-->
 	<main class="main-content">
-		<h2 class="subtitle">Club VTT Sulniac</h2>
-		<h3 class="">Ride, friends, smile.</h3>
+		<h2 class="location"><span>Association VTT Sulniac</span></h2>
+		<h3 class="subtitle"><span>Passion VTT</span></h3>
+
+		<ul>
+			<li>Randonnée
+				<div style="display: none">
+					Nous participons régulièrement à des randonnées organisées, selon le planning proposé
+				</div>
+			</li>
+			<li>Free</li>
+			<li>Bike Park</li>
+			<li>Évènements</li>
+		</ul>
 	</main>
 
 
