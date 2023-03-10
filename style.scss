@@ -17,9 +17,7 @@ $orange: orangered;
     justify-content: $justify;
     align-items: $align;
 }
-
-
-
+/*
 @keyframes rotate {
 from {
     transform: translateX(-200%);
@@ -37,6 +35,7 @@ to{
         transform: translateX(200%), rotate(45deg);
     }
 }
+*/
 @keyframes move-down {
     from { transform: translateY(0);
     }
@@ -49,8 +48,14 @@ to{
 VISIBILITY
 ------------------------------------------------------ 
 */
-.border-red {
-    border:red 2px solid;
+.bg-red {
+    background:red;
+}
+.bg-green {
+    background: green;
+}
+.bg-blue {
+    background: blue;
 }
 
 /*
@@ -63,7 +68,6 @@ body {
     width: 100%;
     height: 100%;
     background: $black;
-    font-family: 'Anton', sans-serif;
 }
 * {
     margin: 0;
@@ -71,6 +75,13 @@ body {
     color: $white;
     list-style: none;
     text-decoration: none;
+}
+
+.link {
+    color: rgb(0, 106, 255);
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 
@@ -88,6 +99,7 @@ HEADER
     /* CHANGE BG, REPLACE WITH MORE RECENT PICTURE */
     height: 50%;
     box-shadow: 0 5px 35px black;
+    padding: 0;
     .navbar-bg {
         position: absolute;
         top:0;
@@ -100,16 +112,43 @@ HEADER
         height: 50px;
         background-position: 0 -100px;
     }
-    .menu-toggle {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        border-radius: 10px;
-        background: none;
-        color: $white;
-        border: none;
+    .nav-menu {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        .slide-menu .btn-close {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            top: 10px;
+            right: 10px;
+        }
+        .slide-menu .slide-menu-header {
+            @include flex(row, center, center);
+            height: 10%;
+            background-color: $blue;
+            .main-title {
+                font-size: 1rem;
+                text-align: center;
+                &::before {
+                    content: "";
+                    display: none;
+                }
+            }
+        }
+
+        .menu-toggle {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border-radius: 10px;
+            background: none;
+            color: $white;
+            border: none;
+        }
     }
-    .main-title {
+
+    .main-title {   
         @include flex(row, center, flex-end);
         text-align: center;
         color: $white;
@@ -166,17 +205,16 @@ HEADER
         margin-right: 1%;
         overflow: hidden;
         height: 60%;
-        
-        span {
-            padding: 1% 2%;
-            animation: move-down .25s .5s linear ;
-            margin-left: 2%;
-            margin-right: 2%;
-            @media screen and (min-width: 370px) {
-                margin-left: 5%;
-                margin-right: 5%;
-                font-size: 4.8rem;
-            }
+    }
+    span {
+        padding: 1% 2%;
+        animation: move-down .25s .5s linear ;
+        margin-left: 2%;
+        margin-right: 2%;
+        @media screen and (min-width: 370px) {
+            margin-left: 5%;
+            margin-right: 5%;
+            font-size: 4.8rem;
         }
     }
     .location span,
@@ -188,43 +226,86 @@ HEADER
         animation-fill-mode: forwards;
     }
     ul {
-        @include flex(row, center, center);
-        width: 90%;
-        margin-bottom: 10%;
-        position: relative;
-        &::after {
-            /*content: url('images/bike.svg');*/
-            content:'';
-            display: block;
-            background-color: white;
-            position: absolute;
-            top: -170%;
-            height: 50px;
-            width: 50px;
-            -webkit-mask: url(images/bike.svg) no-repeat;
-            mask: url(images/bike.svg) no-repeat;
-            -webkit-mask-size: cover;
-            mask-size: cover;
-            animation: left-right 5s, infinite;
-
-        }
-        li {
-            padding: 1% 1%;
-            width: fit-content;
-            border-top: 3px solid transparent;
-            text-transform: uppercase;
-            font-size: .7rem;
-            transition: border-top .3s linear;
-            text-align: center;
-            @media screen and (min-width: 360px) {
-                font-size: .8rem;
-                padding: 1% 2%;;
+            @include flex(row, center, center);
+            width: 90%;
+            margin-bottom: 10%;
+            position: relative;
+            li {
+                @include flex(row, flex-start, center);
+                padding: 1% 1%;
+                width: auto;
+                border-top: 3px solid transparent;
+                text-transform: uppercase;
+                font-size: .7rem;
+                text-align: center;
+                transition: border-top .5s linear;
+                @media screen and (min-width: 360px) {
+                    font-size: .8rem;
+                    padding: 1% 2%;;
+                }
+                &:hover {
+                    border-top: 3px solid $white;
+                    transition: border-top .4s linear;
+                }
+                &:hover div {
+                    z-index: 1;
+                    transition: z-index 0s linear;
+                }
+                &:hover .info {
+                    bottom: 0;
+                    transition: bottom linear .25s .25s; /* incoming transition */
+                    z-index: 2;
+                }
+                div {
+                    @include flex(column, flex-end, center);
+                    position: fixed;
+                    height: 40%;
+                    left: 0;
+                    width: 100%;
+                    overflow: hidden;
+                    font-size: .5rem;
+                    font-family: sans-serif;
+                    padding: 0;
+                    z-index: -1;
+                    transition: z-index 1s linear;
+                    @media screen and (min-width: 360px) {
+                        bottom: 10vh;
+                        height: 40%;
+                    }
+                    figure {
+                        @include flex(column, space-between, center);
+                        position: relative;
+                        height: 100%;
+                        bottom: -100%;
+                        background: $white;
+                        transition: bottom linear .25s; /* outcome transition */
+                        padding: 2.5% 10%;
+                        z-index: 0;
+                        @media screen and (min-width: 360px) {
+                        }
+                        figcaption * {
+                            color: black;
+                            text-align: justify;
+                            font-size: .6rem;
+                            text-transform: none;
+                            width: 75%;
+                            margin: auto;
+                            a {
+                                text-decoration: initial;
+                                color: initial;
+                            }
+                        }
+                        img,
+                        iframe {
+                            width: 70%;
+                            height: auto;
+                            margin: 1%;
+                            border: black 3px solid;
+                            border-radius: 20px;
+                        }
+                    }
+                }
             }
-            &:hover {
-                border-top: 3px solid $white;
-                transition: border-top .3s linear;
-            }
-        }
     }
+
 }
-    

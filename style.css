@@ -3,24 +3,25 @@
 MIXINS / KEYFRAMES / INCLUDES / VARIABLES
 ------------------------------------------------------ 
 */
+/*
 @keyframes rotate {
-  from {
+from {
     transform: translateX(-200%);
     transform: rorate(0deg);
-  }
-  to {
+}
+to{
     transform: rotate(45deg);
     transform: translateX(200%);
-  }
+}
 }
 @keyframes left-right {
-  from {
-    transform: translateX(-200%), rotate(0deg);
-  }
-  to {
-    transform: translateX(200%), rotate(45deg);
-  }
+    from { transform: translateX(-200%), rotate(0deg);
+    }
+    to {
+        transform: translateX(200%), rotate(45deg);
+    }
 }
+*/
 @keyframes move-down {
   from {
     transform: translateY(0);
@@ -34,8 +35,16 @@ MIXINS / KEYFRAMES / INCLUDES / VARIABLES
 VISIBILITY
 ------------------------------------------------------ 
 */
-.border-red {
-  border: red 2px solid;
+.bg-red {
+  background: red;
+}
+
+.bg-green {
+  background: green;
+}
+
+.bg-blue {
+  background: blue;
 }
 
 /*
@@ -48,7 +57,6 @@ body {
   width: 100%;
   height: 100%;
   background: #000;
-  font-family: "Anton", sans-serif;
 }
 
 * {
@@ -57,6 +65,13 @@ body {
   color: #fff;
   list-style: none;
   text-decoration: none;
+}
+
+.link {
+  color: rgb(0, 106, 255);
+}
+.link:hover {
+  text-decoration: underline;
 }
 
 /*
@@ -75,6 +90,7 @@ HEADER
   /* CHANGE BG, REPLACE WITH MORE RECENT PICTURE */
   height: 50%;
   box-shadow: 0 5px 35px black;
+  padding: 0;
 }
 .navbar .navbar-bg {
   position: absolute;
@@ -91,7 +107,35 @@ HEADER
     background-position: 0 -100px;
   }
 }
-.navbar .menu-toggle {
+.navbar .nav-menu {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-menu .slide-menu .btn-close {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 10px;
+  right: 10px;
+}
+.navbar .nav-menu .slide-menu .slide-menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  background-color: #3491b2;
+}
+.navbar .nav-menu .slide-menu .slide-menu-header .main-title {
+  font-size: 1rem;
+  text-align: center;
+}
+.navbar .nav-menu .slide-menu .slide-menu-header .main-title::before {
+  content: "";
+  display: none;
+}
+.navbar .nav-menu .menu-toggle {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -169,14 +213,14 @@ HEADER
   overflow: hidden;
   height: 60%;
 }
-.main-content .subtitle span {
+.main-content span {
   padding: 1% 2%;
   animation: move-down 0.25s 0.5s linear;
   margin-left: 2%;
   margin-right: 2%;
 }
 @media screen and (min-width: 370px) {
-  .main-content .subtitle span {
+  .main-content span {
     margin-left: 5%;
     margin-right: 5%;
     font-size: 4.8rem;
@@ -199,30 +243,18 @@ HEADER
   margin-bottom: 10%;
   position: relative;
 }
-.main-content ul::after {
-  /*content: url('images/bike.svg');*/
-  content: "";
-  display: block;
-  background-color: white;
-  position: absolute;
-  top: -170%;
-  height: 50px;
-  width: 50px;
-  -webkit-mask: url(images/bike.svg) no-repeat;
-  mask: url(images/bike.svg) no-repeat;
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  animation: left-right 5s, infinite;
-}
 .main-content ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   padding: 1% 1%;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: auto;
   border-top: 3px solid transparent;
   text-transform: uppercase;
   font-size: 0.7rem;
-  transition: border-top 0.3s linear;
   text-align: center;
+  transition: border-top 0.5s linear;
 }
 @media screen and (min-width: 360px) {
   .main-content ul li {
@@ -232,5 +264,69 @@ HEADER
 }
 .main-content ul li:hover {
   border-top: 3px solid #fff;
-  transition: border-top 0.3s linear;
+  transition: border-top 0.4s linear;
+}
+.main-content ul li:hover div {
+  z-index: 1;
+  transition: z-index 0s linear;
+}
+.main-content ul li:hover .info {
+  bottom: 0;
+  transition: bottom linear 0.25s 0.25s; /* incoming transition */
+  z-index: 2;
+}
+.main-content ul li div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  height: 40%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  font-size: 0.5rem;
+  font-family: sans-serif;
+  padding: 0;
+  z-index: -1;
+  transition: z-index 1s linear;
+}
+@media screen and (min-width: 360px) {
+  .main-content ul li div {
+    bottom: 10vh;
+    height: 40%;
+  }
+}
+.main-content ul li div figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  bottom: -100%;
+  background: #fff;
+  transition: bottom linear 0.25s; /* outcome transition */
+  padding: 2.5% 10%;
+  z-index: 0;
+}
+.main-content ul li div figure figcaption * {
+  color: black;
+  text-align: justify;
+  font-size: 0.6rem;
+  text-transform: none;
+  width: 75%;
+  margin: auto;
+}
+.main-content ul li div figure figcaption * a {
+  text-decoration: initial;
+  color: initial;
+}
+.main-content ul li div figure img,
+.main-content ul li div figure iframe {
+  width: 70%;
+  height: auto;
+  margin: 1%;
+  border: black 3px solid;
+  border-radius: 20px;
 }/*# sourceMappingURL=style.css.map */
