@@ -3,6 +3,10 @@
 MIXINS / KEYFRAMES / INCLUDES / VARIABLES
 ------------------------------------------------------ 
 */
+.bg-orange {
+  background-color: orangered;
+}
+
 /*
 @keyframes rotate {
 from {
@@ -79,7 +83,7 @@ body {
 HEADER = .navbar + .main-title + slide-menu
 ------------------------------------------------------ 
 */
-.header {
+header {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -89,13 +93,27 @@ HEADER = .navbar + .main-title + slide-menu
   height: 50%;
   padding: 0;
 }
+header figure {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+}
 
 .navbar-bg {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
   background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 90%);
   -o-object-fit: cover;
      object-fit: cover;
@@ -107,13 +125,13 @@ HEADER = .navbar + .main-title + slide-menu
   }
 }
 
-.header .main-title {
+header .main-title, header .page-title {
   position: absolute;
   bottom: 0;
   margin-bottom: 2.5%;
   width: 100%;
 }
-.header .main-title::before {
+header .main-title::before, header .page-title::before {
   content: "";
   background: url("images/favicon.ico") no-repeat;
   display: block;
@@ -124,21 +142,21 @@ HEADER = .navbar + .main-title + slide-menu
   height: 150%;
 }
 
-.slide-menu-header .main-title {
+.slide-menu-header .main-title, .slide-menu-header header .page-title, header .slide-menu-header .page-title {
   position: relative;
   font-size: 1rem;
   margin: 0;
   padding: 0;
 }
-.slide-menu-header .main-title::before {
+.slide-menu-header .main-title::before, .slide-menu-header header .page-title::before, header .slide-menu-header .page-title::before {
   content: "";
   display: none;
 }
 
 .menu-toggle, .slide-menu button {
   position: fixed;
-  top: 1%;
-  right: 5%;
+  top: 10px;
+  right: 10px;
   padding: 0;
   border: none;
 }
@@ -170,11 +188,10 @@ HEADER = .navbar + .main-title + slide-menu
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 10%;
+  height: 50px;
   width: 100%;
   background-color: orangered;
   margin: 0;
-  border: red 2px solid;
 }
 @media screen and (min-width: 300px) {
   .slide-menu .slide-menu-header {
@@ -193,7 +210,7 @@ HEADER = .navbar + .main-title + slide-menu
   font-weight: bold;
 }
 
-.main-title { /* Title : TEAM RAZORBIKE */
+.main-title, header .page-title { /* Title : TEAM RAZORBIKE */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -205,22 +222,34 @@ HEADER = .navbar + .main-title + slide-menu
   height: -moz-fit-content;
   height: fit-content;
   margin: 0;
-  padding: 0;
+  padding: 1% 5%;
   text-transform: uppercase;
-  text-shadow: #000 2px 2px 5px;
+  color: white;
 }
-.main-title .title-link {
+.main-title .title-link, header .page-title .title-link {
   text-decoration: none;
   color: white;
   padding: 0 10px;
 }
 @media screen and (min-width: 300px) {
-  .main-title {
+  .main-title, header .page-title {
     font-size: 2rem;
   }
 }
 
-.main-content {
+header .page-title {
+  font-size: 1rem;
+  height: 50px;
+  background: orangered;
+}
+header .page-title::before {
+  content: "";
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.main, .main-content {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -285,7 +314,7 @@ HEADER = .navbar + .main-title + slide-menu
   animation-fill-mode: forwards;
 }
 
-ul { /* psuedo-links at the bottom of index.html */
+ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -380,4 +409,45 @@ ul li div figure iframe {
   margin: 1%;
   border: black 3px solid;
   border-radius: 20px;
+}
+
+.main-content {
+  height: auto;
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  gap: 10px;
+  margin: 20px auto;
+  box-shadow: 2px 2px red 2px;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+  font-style: italic;
+  border: gray 1px solid;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  background: rgba(255, 255, 255, 0.9);
+}
+.event-text p {
+  text-align: justify;
+}
+
+.event-info {
+  flex: 1;
 }/*# sourceMappingURL=style.css.map */
