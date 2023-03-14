@@ -13,6 +13,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Climate+Crisis&family=Rampart+One&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Shantell+Sans:wght@400;700&family=Tilt+Warp&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Climate+Crisis&family=Rampart+One&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Shantell+Sans:wght@400;700&family=Tilt+Warp&display=swap" rel="stylesheet">
 	<!-- fonts -->
 
 	<!-- SEO -->
@@ -41,9 +44,10 @@
 	HEADER WITH NAVBAR
 	------------------------------------------------------------------------
 	-->
-	<header class="navbar">
+	<header class="header">
 		<figure>
-			<img class="navbar-bg" src="images/cover.jpg" alt="background vtt">
+			<img class="navbar-bg" src="images/cover.jpg" alt="background vtt"> <!-- add a custom bg which can be removed or changed -->
+			<div class="navbar-bg"></div> <!-- div for add gradient-color -->
 		</figure>
 		<nav class="nav-menu navbar navbar-expand-lg fixed-top">
 			<button 
@@ -66,6 +70,7 @@
 					<h5 class="offcanvas-title main-title" id="offcanvasNavbarLabel">Team Razorbike</h5>
 					<button
 					type="button"
+					class="navbar-toggler"
 					data-bs-dismiss="offcanvas"
 					aria-label="Close"
 					>				
@@ -83,7 +88,7 @@
 				</ul> 
 			</div>
 		</nav>
-		<h1 class="main-title"><a href="index.html" class="title-link">Team Razorbike</a></h1>
+		<h1 class="main-title navbar-brand"><a href="index.html" class="title-link">Team Razorbike</a></h1>
 	</header>
 
 

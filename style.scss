@@ -88,245 +88,269 @@ body {
 
 /*
 ------------------------------------------------------ 
-HEADER
+HEADER = .navbar + .main-title + slide-menu
 ------------------------------------------------------ 
 */
-.navbar {
+.header {
     @include flex(row, center, flex-end);
     position: relative;
     width: 100%;
-    background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 80%);
-    /* CHANGE BG, REPLACE WITH MORE RECENT PICTURE */
     height: 50%;
-    box-shadow: 0 5px 35px black;
     padding: 0;
-    .navbar-bg {
-        position: absolute;
-        top:0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+}
+
+.navbar-bg {
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 90%);
+    object-fit: cover;
     @media screen and (min-width: 1024px) {
         height: 50px;
         background-position: 0 -100px;
     }
-    .nav-menu {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        .slide-menu {
-            width: 100%;
-            height: 50%;
-            background: rgba(0, 0, 0, .5);
-            padding: 0;
-            margin: 0;
-            button {
-                position: absolute;
-                height: 20px;
-                width: 20px;
-                top: 1%;
-                right: 15%;
-                margin: 0;
-                padding: 0;
-                background: none;
-                border: none;
-            }
-        }
-        .slide-menu .slide-menu-header {
-            @include flex(row, center, center);
-            height: 10%;
-            background-color: $orange;
-            margin: 0;
-            padding: 0;
-            .main-title {
-                border: blue 2px solid;
-                font-size: 1rem;
-                text-align: center;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                @media screen and (min-width: 300px) {
-                    font-size: 1.5rem;
-                }
-                &::before {
-                    position: absolute;
-                    width: 75%;
-                    height: 75%;
-                    left: -20%;
-                    top: 12.5%;
-                }
-            }
-        }
-        .menu-toggle {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            top: 1%;
-            right: 15%;
-            background: none;
-            border: none;
-        }
+}
+
+.header .main-title {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2.5%;
+    width: 100%;
+    &::before {
+        content: '';
+        background: url("images/favicon.ico") no-repeat;
+        display: block;
+        background-size: contain;
+        position: absolute;
+        top: -100%;
+        width: 20%;
+        height: 150%;
     }
-    .main-title {   
-        @include flex(row, center, flex-end);
-        text-align: center;
-        color: $white;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        position: relative;
-        text-transform: uppercase;
-        font-family: 'Shantell Sans', 'Roboto Condensed', cursive, sans-serif;
-        @media screen and (min-width: 300px) {
-            font-size: 2rem;
-        }
-        &::before {
-            content: '';
-            position: absolute;
-            bottom: 1.5rem;
-            background: url("images/favicon.ico") no-repeat;
-            display: block;
-            background-size: contain;
-            width: 3rem;
-            height: 3rem;
+}
+
+
+.slide-menu-header .main-title {
+    position: relative;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    &::before {
+        content:'';
+        display: none;
+    }
+}
+.menu-toggle {
+    position: fixed;
+    top: 1%;
+    right: 5%;
+    padding: 0;
+    border: none;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.nav-menu {
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+.slide-menu {
+    @include flex(column, flex-start, center);
+    width: 100%!important;
+    height: 50%;
+    background: rgba(0, 0, 0, .5);
+    padding: 0;
+    margin: 0;
+    border: white 1px solid;
+    button {
+        @extend .menu-toggle;
+    }
+}
+.slide-menu .slide-menu-header {
+    @include flex(row, center, center);
+    height: 10%;
+    width: 100%;
+    background-color: $orange;
+    margin: 0;
+    border: red 2px solid;
+    @media screen and (min-width: 300px) {
+        font-size: 2rem;
+    }
+}
+.nav-item {
+    padding: 3%;
+    border-bottom: white solid 2px;
+    &.nav-link {
+        height: 100%;
+        &:hover {
+            font-weight: bold;
         }
     }
 }
+
+
+
+.main-title { /* Title : TEAM RAZORBIKE */
+    @include flex(row, center, center);
+    position: relative;
+    font-family: 'Tilt Warp', 'Climate Crisis', 'Rampart One', 'Roboto Condensed', 'Shantell Sans', 'Anton',  cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    text-shadow: #000 2px 2px 5px;
+    & .title-link {
+        text-decoration: none;
+        color: white;
+        padding: 0 10px;
+    }
+    @media screen and (min-width: 300px) {
+        font-size: 2rem;
+    }
+}
+
+
 .main-content {
     @include flex(column, space-around, center);
     max-width: 100%;
     height: 50%;
-    .location {
-        position: relative;
-        width: 90%;
-        margin: 0 auto;
-        height: 10%;
-        font-size: 1rem;
-        overflow: hidden;
-        font-family: 'Shantell Sans', 'Roboto Condensed', cursive, sans-serif;
-        font-weight: 100;
-        span{
-            animation: move-down .25s .3s linear ;
-            text-align: center;
-            @media screen and (min-width: 370px) {
-                font-size: 1.5rem;
-            }
+}
+.location {
+    position: relative;
+    width: 90%;
+    margin: 5% auto;
+    height: 10%;
+    font-size: 1rem;
+    overflow: hidden;
+    font-family: 'Shantell Sans', 'Roboto Condensed', cursive, sans-serif;
+    font-weight: 100;
+    span {
+        animation: move-down .25s linear ;
+        text-align: center;
+        @media screen and (min-width: 370px) {
+            font-size: 1.5rem;
         }
     }
-    .subtitle {
-        position: relative;
-        font-family: 'Tilt Warp', cursive; 
-        font-size: 3.5rem;
-        color: $white;
-        text-transform: uppercase;
-        text-align: justify;
-        width: 90%;
-        margin-left: 1%;
-        margin-right: 1%;
-        overflow: hidden;
-        height: 60%;
-    }
+}
+.subtitle {
+    position: relative;
+    font-family: 'Tilt Warp', cursive; 
+    font-size: 3.5rem;
+    color: $white;
+    text-transform: uppercase;
+    text-align: justify;
+    width: 90%;
+    margin-left: 1%;
+    margin-right: 1%;
+    overflow: hidden;
+    height: 60%;
     span {
         padding: 1% 2%;
-        animation: move-down .25s .5s linear ;
+        animation: move-down .25s .25s linear ;
         margin-left: 2%;
         margin-right: 2%;
         @media screen and (min-width: 370px) {
             margin-left: 5%;
             margin-right: 5%;
-            font-size: 4.8rem;
+            font-size: 4.5rem;
         }
     }
-    .location span,
-    .subtitle span {
-        position: absolute;
-        width: 100%;
-        bottom: 100%;
-        left: 0;
-        animation-fill-mode: forwards;
-    }
-    ul {
-            @include flex(row, center, center);
-            width: 90%;
-            margin-bottom: 10%;
-            position: relative;
-            li {
-                @include flex(row, flex-start, center);
-                padding: 10%;
-                width: auto;
-                border-top: 3px solid transparent;
-                text-transform: uppercase;
-                font-size: .7rem;
-                text-align: center;
-                transition: border-top .5s linear;
+}
+
+.location span,
+.subtitle span { /* Titles come from top transition */
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    animation-fill-mode: forwards;
+}
+
+
+ul { /* psuedo-links at the bottom of index.html */
+        @include flex(row, center, center);
+        width: 90%;
+        margin-bottom: 10%;
+        position: relative;
+        li {
+            @include flex(row, flex-start, center);
+            padding: 1% 2.5%;
+            width: auto;
+            border-top: 3px solid transparent;
+            text-transform: uppercase;
+            font-size: .7rem;
+            text-align: center;
+            transition: border-top .5s linear;
+            @media screen and (min-width: 360px) {
+                font-size: .8rem;
+                padding: 1% 2%;;
+            }
+            &:hover {
+                border-top: 3px solid $white;
+                transition: border-top .4s linear;
+            }
+            &:hover div {
+                z-index: 1;
+                transition: z-index 0s linear;
+            }
+            &:hover .info {
+                bottom: 0;
+                transition: bottom linear .25s .25s; /* incoming transition */
+                z-index: 2;
+            }
+            div {
+                @include flex(column, flex-end, center);
+                position: fixed;
+                height: 40%;
+                left: 0;
+                width: 100%;
+                overflow: hidden;
+                font-size: .5rem;
+                font-family: sans-serif;
+                padding: 0;
+                z-index: -1;
+                transition: z-index 1s linear;
                 @media screen and (min-width: 360px) {
-                    font-size: .8rem;
-                    padding: 1% 2%;;
-                }
-                &:hover {
-                    border-top: 3px solid $white;
-                    transition: border-top .4s linear;
-                }
-                &:hover div {
-                    z-index: 1;
-                    transition: z-index 0s linear;
-                }
-                &:hover .info {
-                    bottom: 0;
-                    transition: bottom linear .25s .25s; /* incoming transition */
-                    z-index: 2;
-                }
-                div {
-                    @include flex(column, flex-end, center);
-                    position: fixed;
+                    bottom: 10vh;
                     height: 40%;
-                    left: 0;
-                    width: 100%;
-                    overflow: hidden;
-                    font-size: .5rem;
-                    font-family: sans-serif;
-                    padding: 0;
-                    z-index: -1;
-                    transition: z-index 1s linear;
+                }
+                figure {
+                    @include flex(column, space-between, center);
+                    position: relative;
+                    height: 100%;
+                    bottom: -100%;
+                    background: $white;
+                    transition: bottom linear .25s; /* outcome transition */
+                    padding: 2.5% 10%;
+                    z-index: 0;
                     @media screen and (min-width: 360px) {
-                        bottom: 10vh;
-                        height: 40%;
                     }
-                    figure {
-                        @include flex(column, space-between, center);
-                        position: relative;
-                        height: 100%;
-                        bottom: -100%;
-                        background: $white;
-                        transition: bottom linear .25s; /* outcome transition */
-                        padding: 2.5% 10%;
-                        z-index: 0;
-                        @media screen and (min-width: 360px) {
+                    figcaption * {
+                        color: black;
+                        text-align: justify;
+                        font-size: .6rem;
+                        text-transform: none;
+                        width: 75%;
+                        margin: auto;
+                        a {
+                            text-decoration: initial;
+                            color: initial;
                         }
-                        figcaption * {
-                            color: black;
-                            text-align: justify;
-                            font-size: .6rem;
-                            text-transform: none;
-                            width: 75%;
-                            margin: auto;
-                            a {
-                                text-decoration: initial;
-                                color: initial;
-                            }
-                        }
-                        img,
-                        iframe {
-                            width: 70%;
-                            height: auto;
-                            margin: 1%;
-                            border: black 3px solid;
-                            border-radius: 20px;
-                        }
+                    }
+                    img,
+                    iframe {
+                        width: 70%;
+                        height: auto;
+                        margin: 1%;
+                        border: black 3px solid;
+                        border-radius: 20px;
                     }
                 }
             }
-    }
-
+        }
 }

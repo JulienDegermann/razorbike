@@ -76,126 +76,148 @@ body {
 
 /*
 ------------------------------------------------------ 
-HEADER
+HEADER = .navbar + .main-title + slide-menu
 ------------------------------------------------------ 
 */
-.navbar {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
   position: relative;
   width: 100%;
-  background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 80%);
-  /* CHANGE BG, REPLACE WITH MORE RECENT PICTURE */
   height: 50%;
-  box-shadow: 0 5px 35px black;
   padding: 0;
 }
-.navbar .navbar-bg {
+
+.navbar-bg {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 90%);
   -o-object-fit: cover;
      object-fit: cover;
 }
 @media screen and (min-width: 1024px) {
-  .navbar {
+  .navbar-bg {
     height: 50px;
     background-position: 0 -100px;
   }
 }
-.navbar .nav-menu {
-  height: 100%;
+
+.header .main-title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2.5%;
+  width: 100%;
+}
+.header .main-title::before {
+  content: "";
+  background: url("images/favicon.ico") no-repeat;
+  display: block;
+  background-size: contain;
+  position: absolute;
+  top: -100%;
+  width: 20%;
+  height: 150%;
+}
+
+.slide-menu-header .main-title {
+  position: relative;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
-.navbar .nav-menu .slide-menu {
-  width: 100%;
+.slide-menu-header .main-title::before {
+  content: "";
+  display: none;
+}
+
+.menu-toggle, .slide-menu button {
+  position: fixed;
+  top: 1%;
+  right: 5%;
+  padding: 0;
+  border: none;
+}
+.menu-toggle:focus, .slide-menu button:focus {
+  box-shadow: none;
+}
+
+.nav-menu {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+.slide-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100% !important;
   height: 50%;
   background: rgba(0, 0, 0, 0.5);
   padding: 0;
   margin: 0;
+  border: white 1px solid;
 }
-.navbar .nav-menu .slide-menu button {
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  top: 1%;
-  right: 15%;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-}
-.navbar .nav-menu .slide-menu .slide-menu-header {
+.slide-menu .slide-menu-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 10%;
+  width: 100%;
   background-color: orangered;
   margin: 0;
-  padding: 0;
-}
-.navbar .nav-menu .slide-menu .slide-menu-header .main-title {
-  border: blue 2px solid;
-  font-size: 1rem;
-  text-align: center;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  border: red 2px solid;
 }
 @media screen and (min-width: 300px) {
-  .navbar .nav-menu .slide-menu .slide-menu-header .main-title {
-    font-size: 1.5rem;
-  }
-}
-.navbar .nav-menu .slide-menu .slide-menu-header .main-title::before {
-  position: absolute;
-  width: 75%;
-  height: 75%;
-  left: -20%;
-  top: 12.5%;
-}
-.navbar .nav-menu .menu-toggle {
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  top: 1%;
-  right: 15%;
-  background: none;
-  border: none;
-}
-.navbar .main-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: center;
-  color: #fff;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  position: relative;
-  text-transform: uppercase;
-  font-family: "Shantell Sans", "Roboto Condensed", cursive, sans-serif;
-}
-@media screen and (min-width: 300px) {
-  .navbar .main-title {
+  .slide-menu .slide-menu-header {
     font-size: 2rem;
   }
 }
-.navbar .main-title::before {
-  content: "";
-  position: absolute;
-  bottom: 1.5rem;
-  background: url("images/favicon.ico") no-repeat;
-  display: block;
-  background-size: contain;
-  width: 3rem;
-  height: 3rem;
+
+.nav-item {
+  padding: 3%;
+  border-bottom: white solid 2px;
+}
+.nav-item.nav-link {
+  height: 100%;
+}
+.nav-item.nav-link:hover {
+  font-weight: bold;
+}
+
+.main-title { /* Title : TEAM RAZORBIKE */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "Tilt Warp", "Climate Crisis", "Rampart One", "Roboto Condensed", "Shantell Sans", "Anton", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  text-shadow: #000 2px 2px 5px;
+}
+.main-title .title-link {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+}
+@media screen and (min-width: 300px) {
+  .main-title {
+    font-size: 2rem;
+  }
 }
 
 .main-content {
@@ -206,26 +228,28 @@ HEADER
   max-width: 100%;
   height: 50%;
 }
-.main-content .location {
+
+.location {
   position: relative;
   width: 90%;
-  margin: 0 auto;
+  margin: 5% auto;
   height: 10%;
   font-size: 1rem;
   overflow: hidden;
   font-family: "Shantell Sans", "Roboto Condensed", cursive, sans-serif;
   font-weight: 100;
 }
-.main-content .location span {
-  animation: move-down 0.25s 0.3s linear;
+.location span {
+  animation: move-down 0.25s linear;
   text-align: center;
 }
 @media screen and (min-width: 370px) {
-  .main-content .location span {
+  .location span {
     font-size: 1.5rem;
   }
 }
-.main-content .subtitle {
+
+.subtitle {
   position: relative;
   font-family: "Tilt Warp", cursive;
   font-size: 3.5rem;
@@ -238,28 +262,30 @@ HEADER
   overflow: hidden;
   height: 60%;
 }
-.main-content span {
+.subtitle span {
   padding: 1% 2%;
-  animation: move-down 0.25s 0.5s linear;
+  animation: move-down 0.25s 0.25s linear;
   margin-left: 2%;
   margin-right: 2%;
 }
 @media screen and (min-width: 370px) {
-  .main-content span {
+  .subtitle span {
     margin-left: 5%;
     margin-right: 5%;
-    font-size: 4.8rem;
+    font-size: 4.5rem;
   }
 }
-.main-content .location span,
-.main-content .subtitle span {
+
+.location span,
+.subtitle span { /* Titles come from top transition */
   position: absolute;
   width: 100%;
   bottom: 100%;
   left: 0;
   animation-fill-mode: forwards;
 }
-.main-content ul {
+
+ul { /* psuedo-links at the bottom of index.html */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -268,12 +294,12 @@ HEADER
   margin-bottom: 10%;
   position: relative;
 }
-.main-content ul li {
+ul li {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 10%;
+  padding: 1% 2.5%;
   width: auto;
   border-top: 3px solid transparent;
   text-transform: uppercase;
@@ -282,25 +308,25 @@ HEADER
   transition: border-top 0.5s linear;
 }
 @media screen and (min-width: 360px) {
-  .main-content ul li {
+  ul li {
     font-size: 0.8rem;
     padding: 1% 2%;
   }
 }
-.main-content ul li:hover {
+ul li:hover {
   border-top: 3px solid #fff;
   transition: border-top 0.4s linear;
 }
-.main-content ul li:hover div {
+ul li:hover div {
   z-index: 1;
   transition: z-index 0s linear;
 }
-.main-content ul li:hover .info {
+ul li:hover .info {
   bottom: 0;
   transition: bottom linear 0.25s 0.25s; /* incoming transition */
   z-index: 2;
 }
-.main-content ul li div {
+ul li div {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -317,12 +343,12 @@ HEADER
   transition: z-index 1s linear;
 }
 @media screen and (min-width: 360px) {
-  .main-content ul li div {
+  ul li div {
     bottom: 10vh;
     height: 40%;
   }
 }
-.main-content ul li div figure {
+ul li div figure {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -335,7 +361,7 @@ HEADER
   padding: 2.5% 10%;
   z-index: 0;
 }
-.main-content ul li div figure figcaption * {
+ul li div figure figcaption * {
   color: black;
   text-align: justify;
   font-size: 0.6rem;
@@ -343,12 +369,12 @@ HEADER
   width: 75%;
   margin: auto;
 }
-.main-content ul li div figure figcaption * a {
+ul li div figure figcaption * a {
   text-decoration: initial;
   color: initial;
 }
-.main-content ul li div figure img,
-.main-content ul li div figure iframe {
+ul li div figure img,
+ul li div figure iframe {
   width: 70%;
   height: auto;
   margin: 1%;
