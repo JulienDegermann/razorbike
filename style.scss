@@ -83,6 +83,7 @@ body {
     color: $white;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .link {
@@ -106,7 +107,7 @@ header {
     height: 50%;
     padding: 0;
     figure {
-        height: 100%;
+        width: 100%;
     }
 }
 
@@ -313,6 +314,7 @@ ul { // psuedo-links at the bottom of index.html
         width: 90%;
         margin-bottom: 10%;
         position: relative;
+        padding: 0;
         li {
             @include flex(row, flex-start, center);
             padding: 1% 2.5%;
@@ -330,30 +332,33 @@ ul { // psuedo-links at the bottom of index.html
                 border-top: 3px solid $white;
                 transition: border-top .4s linear;
             }
-            &:hover div {
+            &:hover .pseudo-modal {
                 z-index: 1;
                 transition: z-index 0s linear;
+                bottom: 100%;
             }
             &:hover .info {
                 bottom: 0;
                 transition: bottom linear .25s .25s; /* incoming transition */
                 z-index: 2;
+                padding: 20px;
             }
-            div {
+            .pseudo-modal {
                 @include flex(column, flex-end, center);
-                position: fixed;
-                height: 40%;
-                left: 0;
+                position: absolute;
+                height: 40vh;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 100%; 
                 width: 100%;
                 overflow: hidden;
                 font-size: .5rem;
                 font-family: sans-serif;
-                padding: 0;
-                z-index: -1;
-                transition: z-index 1s linear;
+                z-index: 0;
+                // transition: z-index 1s linear;
                 @media screen and (min-width: 360px) {
-                    bottom: 10vh;
-                    height: 40%;
+                    bottom: 0;
+                    height: 40vh;
                 }
                 figure {
                     @include flex(column, space-between, center);
@@ -363,6 +368,7 @@ ul { // psuedo-links at the bottom of index.html
                     background: $white;
                     transition: bottom linear .25s; /* outcome transition */
                     padding: 2.5% 10%;
+                    margin: 0;
                     z-index: 0;
                     @media screen and (min-width: 360px) {
                     }
@@ -380,8 +386,7 @@ ul { // psuedo-links at the bottom of index.html
                     }
                     img,
                     iframe {
-                        width: 70%;
-                        height: auto;
+                        width: 80%;
                         margin: 1%;
                         border: black 3px solid;
                         border-radius: 20px;

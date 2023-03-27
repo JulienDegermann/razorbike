@@ -69,6 +69,7 @@ body {
   color: #fff;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .link {
@@ -94,7 +95,7 @@ header {
   padding: 0;
 }
 header figure {
-  height: 100%;
+  width: 100%;
 }
 
 .header {
@@ -324,6 +325,7 @@ ul {
   width: 90%;
   margin-bottom: 10%;
   position: relative;
+  padding: 0;
 }
 ul li {
   display: flex;
@@ -348,38 +350,40 @@ ul li:hover {
   border-top: 3px solid #fff;
   transition: border-top 0.4s linear;
 }
-ul li:hover div {
+ul li:hover .pseudo-modal {
   z-index: 1;
   transition: z-index 0s linear;
+  bottom: 100%;
 }
 ul li:hover .info {
   bottom: 0;
   transition: bottom linear 0.25s 0.25s; /* incoming transition */
   z-index: 2;
+  padding: 20px;
 }
-ul li div {
+ul li .pseudo-modal {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  position: fixed;
-  height: 40%;
-  left: 0;
+  position: absolute;
+  height: 40vh;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
   width: 100%;
   overflow: hidden;
   font-size: 0.5rem;
   font-family: sans-serif;
-  padding: 0;
-  z-index: -1;
-  transition: z-index 1s linear;
+  z-index: 0;
 }
 @media screen and (min-width: 360px) {
-  ul li div {
-    bottom: 10vh;
-    height: 40%;
+  ul li .pseudo-modal {
+    bottom: 0;
+    height: 40vh;
   }
 }
-ul li div figure {
+ul li .pseudo-modal figure {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -390,9 +394,10 @@ ul li div figure {
   background: #fff;
   transition: bottom linear 0.25s; /* outcome transition */
   padding: 2.5% 10%;
+  margin: 0;
   z-index: 0;
 }
-ul li div figure figcaption * {
+ul li .pseudo-modal figure figcaption * {
   color: black;
   text-align: justify;
   font-size: 0.6rem;
@@ -400,14 +405,13 @@ ul li div figure figcaption * {
   width: 75%;
   margin: auto;
 }
-ul li div figure figcaption * a {
+ul li .pseudo-modal figure figcaption * a {
   text-decoration: initial;
   color: initial;
 }
-ul li div figure img,
-ul li div figure iframe {
-  width: 70%;
-  height: auto;
+ul li .pseudo-modal figure img,
+ul li .pseudo-modal figure iframe {
+  width: 80%;
   margin: 1%;
   border: black 3px solid;
   border-radius: 20px;
