@@ -106,6 +106,10 @@ header {
     width: 100%;
     height: 50%;
     padding: 0;
+    @media screen and (min-width: 1024px) {
+        height: 30vh;
+        // @include flex(row, flex-start, flex-end);
+    }
     figure {
         width: 100%;
     }
@@ -127,8 +131,7 @@ header {
     background: radial-gradient(rgba(0, 0, 0, 0) 50%, black 90%);
     object-fit: cover;
     @media screen and (min-width: 1024px) {
-        height: 50px;
-        background-position: 0 -100px;
+        // background-position: 0 -100px;
     }
 }
 
@@ -176,7 +179,9 @@ header .main-title {
 }
 
 .nav-menu {
+    @include flex(column, center, flex-start);
     height: fit-content;
+    width: 30%;
     margin: 0;
     padding: 0;
 }
@@ -277,7 +282,7 @@ header .bar-title {
 .subtitle {
     position: relative;
     font-family: 'Tilt Warp', cursive; 
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     color: $white;
     text-transform: uppercase;
     text-align: justify;
@@ -295,6 +300,18 @@ header .bar-title {
             margin-left: 5%;
             margin-right: 5%;
             font-size: 4.5rem;
+        }
+        @media screen and (min-width: 480px) {
+            font-size: 6rem;
+            line-height: .9;;
+        }
+        @media screen and (min-width: 650px) {
+            font-size: 8rem;
+            line-height: .9;;
+        }
+        @media screen and (min-width: 992px) {
+            font-size: 8rem;
+            line-height: .9;;
         }
     }
 }
@@ -331,17 +348,13 @@ ul { // psuedo-links at the bottom of index.html
             &:hover {
                 border-top: 3px solid $white;
                 transition: border-top .4s linear;
+                font-weight: bold;
+                transition: font-weight 1s linear;
             }
             &:hover .pseudo-modal {
                 z-index: 1;
                 transition: z-index 0s linear;
                 bottom: 100%;
-            }
-            &:hover .info {
-                bottom: 0;
-                transition: bottom linear .25s .25s; /* incoming transition */
-                z-index: 2;
-                padding: 20px;
             }
             .pseudo-modal {
                 @include flex(column, flex-end, center);
@@ -357,28 +370,34 @@ ul { // psuedo-links at the bottom of index.html
                 z-index: 0;
                 // transition: z-index 1s linear;
                 @media screen and (min-width: 360px) {
-                    bottom: 0;
+                    bottom: 100%;
                     height: 40vh;
                 }
-                figure {
+                .info {
                     @include flex(column, space-between, center);
                     position: relative;
                     height: 100%;
+                    width: 90%;
                     bottom: -100%;
+                    border-radius: 5px;
                     background: $white;
                     transition: bottom linear .25s; /* outcome transition */
-                    padding: 2.5% 10%;
+                    padding: 1% 2%;
                     margin: 0;
                     z-index: 0;
-                    @media screen and (min-width: 360px) {
+                    @media screen and (min-width: 450px) {
+                        @include flex(row, space-between, center);
                     }
                     figcaption * {
                         color: black;
-                        text-align: justify;
+                        text-align: center;
                         font-size: .6rem;
                         text-transform: none;
                         width: 75%;
                         margin: auto;
+                        @media screen and (min-width: 450px) {
+                            font-size: 1rem;
+                        }
                         a {
                             text-decoration: initial;
                             color: initial;
@@ -386,12 +405,20 @@ ul { // psuedo-links at the bottom of index.html
                     }
                     img,
                     iframe {
-                        width: 80%;
+                        width: 90%;
                         margin: 1%;
-                        border: black 3px solid;
                         border-radius: 20px;
+                        @media screen and (min-width: 500px) {
+                            width: 60%;                            
+                        }
                     }
                 }
+            }
+            &:hover .info {
+                bottom: 0;
+                transition: bottom linear .25s .25s; /* incoming transition */
+                z-index: 2;
+                padding: 20px;
             }
         }
 }
@@ -423,6 +450,11 @@ header {
     @extend .main;
     margin-top: 60px;
     height: auto;
+    @media screen and (min-width: 992px) {
+        max-width: 900px;
+        margin: auto;
+        border: $white solid 2px;
+    }
 }
 .event { // container
     @include flex (column, space-around, center);
@@ -431,10 +463,25 @@ header {
     margin: 20px auto;
     box-shadow: 2px 2px red 2px;
 }
+
+.event:nth-child(odd) .event-article {
+    @media screen and (min-width:1024px) {
+        @include flex (row, center, center);
+    }
+}
+
+.event:nth-child(even) .event-article {
+    @media screen and (min-width:1024px) {
+        @include flex (row-reverse, center, center);
+    }
+}
+
 .event-title { // title
     font-weight: bold;
     font-size: 1.1rem;
 }
+
+
 .event-text { // article text
     @include flex(row, center, center);
     flex: 2;
@@ -449,5 +496,105 @@ header {
     }
 }
 .event-info { // article info : img + form + date + address
+    @include flex(row, center, flex-start);
     flex: 1;
+    figure {
+        @include flex(column, center, center);
+        width: 50%;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// modal pre-inscription
+.modal-access {
+    color: $black;
+    background: $orange;
+    transition: all .5s linear;
+    width: 100%;
+    padding: 15px;
+    &:hover {
+        color: $orange;
+        background: $black;
+        border-color: white;
+        font-weight: bold;
+        transition: all .5s linear;
+    }
+}
+
+.modal-dialog {
+    @include flex(row, center, center);
+    height: 100%;    
+}
+.modal-content {
+    @include flex(column, space-around, center);
+    width: fit-content;
+    height: 500px;
+    margin: auto;
+    padding: 5px 5px;
+    .modal-body {
+        width: 100%;
+        padding: 0;
+    }
+    .modal-title,
+    label {
+        @include flex(column, center, flex-start);
+        color: $black;
+        gap: 10px;
+        width: 80%;
+        margin: 2px auto;
+    }
+    .modal-title {
+        font-size: 1.4rem;
+    }
+    input {
+        text-align: center;
+        color: $orange;
+        padding: 5px 15px;
+        border-radius: 5px;
+        width: 100%;
+        &:focus{
+            background: lighten($orange, 40%);
+            outline-color: $orange;
+        }
+    }
+    button {
+        padding: .4rem 1rem;
+        border: none;
+        border-radius: 5px;
+        transition: all .25s linear;
+        &:hover {
+            font-weight: bold;
+            font-size: 1.4rem;
+            transition: all .25s linear;
+        }
+        &[type="submit"] {
+        background: green;
+        }
+        &.close {
+            background: red;
+        }
+    }
+    .modal-header {
+        gap: 20px;
+        position: relative;
+        border: none;
+        padding-bottom: 0;
+    }
+    .modal-header button {
+        @include flex(row, center, center);
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+    }
+    .modal-footer {
+        @include flex(row, center, center);
+        gap: 20px;
+        border: none;
+        width: 100%;
+        height: 5rem;
+    }
 }

@@ -94,6 +94,11 @@ header {
   height: 50%;
   padding: 0;
 }
+@media screen and (min-width: 1024px) {
+  header {
+    height: 30vh;
+  }
+}
 header figure {
   width: 100%;
 }
@@ -119,13 +124,6 @@ header figure {
   -o-object-fit: cover;
      object-fit: cover;
 }
-@media screen and (min-width: 1024px) {
-  .navbar-bg {
-    height: 50px;
-    background-position: 0 -100px;
-  }
-}
-
 header .main-title, header .bar-title {
   position: absolute;
   bottom: 0;
@@ -166,8 +164,13 @@ header .main-title::before, header .bar-title::before {
 }
 
 .nav-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   height: -moz-fit-content;
   height: fit-content;
+  width: 30%;
   margin: 0;
   padding: 0;
 }
@@ -284,7 +287,7 @@ header .bar-title::before {
 .subtitle {
   position: relative;
   font-family: "Tilt Warp", cursive;
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   color: #fff;
   text-transform: uppercase;
   text-align: justify;
@@ -305,6 +308,24 @@ header .bar-title::before {
     margin-left: 5%;
     margin-right: 5%;
     font-size: 4.5rem;
+  }
+}
+@media screen and (min-width: 480px) {
+  .subtitle span {
+    font-size: 6rem;
+    line-height: 0.9;
+  }
+}
+@media screen and (min-width: 650px) {
+  .subtitle span {
+    font-size: 8rem;
+    line-height: 0.9;
+  }
+}
+@media screen and (min-width: 992px) {
+  .subtitle span {
+    font-size: 8rem;
+    line-height: 0.9;
   }
 }
 
@@ -349,17 +370,13 @@ ul li {
 ul li:hover {
   border-top: 3px solid #fff;
   transition: border-top 0.4s linear;
+  font-weight: bold;
+  transition: font-weight 1s linear;
 }
 ul li:hover .pseudo-modal {
   z-index: 1;
   transition: z-index 0s linear;
   bottom: 100%;
-}
-ul li:hover .info {
-  bottom: 0;
-  transition: bottom linear 0.25s 0.25s; /* incoming transition */
-  z-index: 2;
-  padding: 20px;
 }
 ul li .pseudo-modal {
   display: flex;
@@ -379,42 +396,68 @@ ul li .pseudo-modal {
 }
 @media screen and (min-width: 360px) {
   ul li .pseudo-modal {
-    bottom: 0;
+    bottom: 100%;
     height: 40vh;
   }
 }
-ul li .pseudo-modal figure {
+ul li .pseudo-modal .info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
   height: 100%;
+  width: 90%;
   bottom: -100%;
+  border-radius: 5px;
   background: #fff;
   transition: bottom linear 0.25s; /* outcome transition */
-  padding: 2.5% 10%;
+  padding: 1% 2%;
   margin: 0;
   z-index: 0;
 }
-ul li .pseudo-modal figure figcaption * {
+@media screen and (min-width: 450px) {
+  ul li .pseudo-modal .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+ul li .pseudo-modal .info figcaption * {
   color: black;
-  text-align: justify;
+  text-align: center;
   font-size: 0.6rem;
   text-transform: none;
   width: 75%;
   margin: auto;
 }
-ul li .pseudo-modal figure figcaption * a {
+@media screen and (min-width: 450px) {
+  ul li .pseudo-modal .info figcaption * {
+    font-size: 1rem;
+  }
+}
+ul li .pseudo-modal .info figcaption * a {
   text-decoration: initial;
   color: initial;
 }
-ul li .pseudo-modal figure img,
-ul li .pseudo-modal figure iframe {
-  width: 80%;
+ul li .pseudo-modal .info img,
+ul li .pseudo-modal .info iframe {
+  width: 90%;
   margin: 1%;
-  border: black 3px solid;
   border-radius: 20px;
+}
+@media screen and (min-width: 500px) {
+  ul li .pseudo-modal .info img,
+  ul li .pseudo-modal .info iframe {
+    width: 60%;
+  }
+}
+ul li:hover .info {
+  bottom: 0;
+  transition: bottom linear 0.25s 0.25s; /* incoming transition */
+  z-index: 2;
+  padding: 20px;
 }
 
 header {
@@ -440,6 +483,13 @@ header {
   margin-top: 60px;
   height: auto;
 }
+@media screen and (min-width: 992px) {
+  .main-content {
+    max-width: 900px;
+    margin: auto;
+    border: #fff solid 2px;
+  }
+}
 
 .event {
   display: flex;
@@ -450,6 +500,24 @@ header {
   gap: 10px;
   margin: 20px auto;
   box-shadow: 2px 2px red 2px;
+}
+
+@media screen and (min-width: 1024px) {
+  .event:nth-child(odd) .event-article {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .event:nth-child(even) .event-article {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .event-title {
@@ -475,5 +543,127 @@ header {
 }
 
 .event-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
   flex: 1;
+}
+.event-info figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.event-info figure img {
+  width: 100%;
+}
+
+.modal-access {
+  color: #000;
+  background: orangered;
+  transition: all 0.5s linear;
+  width: 100%;
+  padding: 15px;
+}
+.modal-access:hover {
+  color: orangered;
+  background: #000;
+  border-color: white;
+  font-weight: bold;
+  transition: all 0.5s linear;
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 500px;
+  margin: auto;
+  padding: 5px 5px;
+}
+.modal-content .modal-body {
+  width: 100%;
+  padding: 0;
+}
+.modal-content .modal-title,
+.modal-content label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #000;
+  gap: 10px;
+  width: 80%;
+  margin: 2px auto;
+}
+.modal-content .modal-title {
+  font-size: 1.4rem;
+}
+.modal-content input {
+  text-align: center;
+  color: orangered;
+  padding: 5px 15px;
+  border-radius: 5px;
+  width: 100%;
+}
+.modal-content input:focus {
+  background: #ffdacc;
+  outline-color: orangered;
+}
+.modal-content button {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.25s linear;
+}
+.modal-content button:hover {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transition: all 0.25s linear;
+}
+.modal-content button[type=submit] {
+  background: green;
+}
+.modal-content button.close {
+  background: red;
+}
+.modal-content .modal-header {
+  gap: 20px;
+  position: relative;
+  border: none;
+  padding-bottom: 0;
+}
+.modal-content .modal-header button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+}
+.modal-content .modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  width: 100%;
+  height: 5rem;
 }/*# sourceMappingURL=style.css.map */
