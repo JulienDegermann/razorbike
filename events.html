@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- styles -->
@@ -97,14 +97,14 @@
 
 							<!-- add button to open a modal and add a form in the modal for each event -->
 							<button type="button" class="btn modal-access" data-bs-toggle="modal"
-								data-bs-target="#megavalanche-form">Pré-inscriptions</button>
-							<div class="modal fade" tabindex="-1" role="dialog" id="megavalanche-form"
+								data-bs-target="#inscription-form">Pré-inscriptions</button>
+							<div class="modal fade" tabindex="-1" role="dialog" id="inscription-form"
 								aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
 											<!-- change color title -->
-											<h5 class="modal-title">Pré-inscription Megavalanche</h5>
+											<h5 class="modal-title">Pré-inscription</h5>
 											<button type="button" class="close" data-bs-dismiss="modal"
 												aria-label="Close">
 												<span class="icon close" aria-hidden="true">&times;</span>
@@ -149,6 +149,22 @@
 													maxlength="10"
 													placeholder="ex : 0123456789"
 													></label>
+												<label for="choice">Je souhaite me pré-inscrire pour :
+													<select
+														name="choice" 
+														required 
+														id="choice"
+														style="color:gray"
+														>
+														<option value="" selected>--Choisis un évènement--</option>
+														<option value="megavalanche">Megavalanche</option>
+														<option value="monts-arree">Roch' des Monts d'Arrée</option>
+														<option value="mountain-hell">Mountain of Hell</option>
+														<option value="bignan">Enduro de Bignan</option>
+														<option value="stage">Stage de Saint-Goueno</option>
+													</select>
+												</label>
+
 													<div class="modal-footer">
 														<button	
 														type="button" 
@@ -186,7 +202,8 @@
 					<figure>
 						<img src="images/join2.jpg" alt="">
 						<figcaption>
-
+							<p>Date: 9 et 10 septembre 2023</p>
+							<address>Dtade municipal Corentin Tymen de HUELGOAT</address>
 						</figcaption>
 					</figure>
 				</aside>
@@ -203,15 +220,25 @@
 				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
 			</article>
 			<aside class="event-info">
-				<figure>
-					<!-- <img src="" alt=""> -->
-					<figcaption>ezfgjlhezglze</figcaption>
-				</figure>
+				<figcaption>
+					<p>Date : 3 - 9 juillet 2023</p>
+					<address>Alpe d'Huez</address>
+
+
+					<!-- add button to open a modal and add a form in the modal for each event -->
+					<button type="button" class="btn modal-access" data-bs-toggle="modal"
+						data-bs-target="#inscription-form">Pré-inscriptions</button>
+					
+
+
+
+
+				</figcaption>
 			</aside>
 		</section>
 
 		<section class="event">
-			<h4 class="event-title">Bignan</h4>
+			<h4 class="event-title">Enduro de Bignan</h4>
 
 			<article class="event-texte">
 				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>

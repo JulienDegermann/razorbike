@@ -392,7 +392,7 @@ ul li .pseudo-modal {
   overflow: hidden;
   font-size: 0.5rem;
   font-family: sans-serif;
-  z-index: 0;
+  z-index: -1;
 }
 @media screen and (min-width: 360px) {
   ul li .pseudo-modal {
@@ -414,7 +414,7 @@ ul li .pseudo-modal .info {
   transition: bottom linear 0.25s; /* outcome transition */
   padding: 1% 2%;
   margin: 0;
-  z-index: 0;
+  z-index: -1;
 }
 @media screen and (min-width: 450px) {
   ul li .pseudo-modal .info {
@@ -588,6 +588,7 @@ header {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  position: relative;
   width: -moz-fit-content;
   width: fit-content;
   height: 500px;
@@ -600,10 +601,7 @@ header {
 }
 .modal-content .modal-title,
 .modal-content label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  display: block;
   color: #000;
   gap: 10px;
   width: 80%;
@@ -611,6 +609,8 @@ header {
 }
 .modal-content .modal-title {
   font-size: 1.4rem;
+  width: 100%;
+  padding-top: 20px;
 }
 .modal-content input {
   text-align: center;
@@ -622,6 +622,10 @@ header {
 .modal-content input:focus {
   background: #ffdacc;
   outline-color: orangered;
+}
+.modal-content select {
+  color: black;
+  width: 100%;
 }
 .modal-content button {
   padding: 0.4rem 1rem;
@@ -641,10 +645,9 @@ header {
   background: red;
 }
 .modal-content .modal-header {
-  gap: 20px;
-  position: relative;
   border: none;
-  padding-bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 .modal-content .modal-header button {
   display: flex;
@@ -654,8 +657,9 @@ header {
   position: absolute;
   top: 10px;
   right: 15px;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
+  padding: 0.6rem;
 }
 .modal-content .modal-footer {
   display: flex;
