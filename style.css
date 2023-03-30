@@ -103,17 +103,6 @@ header figure {
   width: 100%;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  margin: 0;
-}
-
 .navbar-bg {
   position: absolute;
   top: 0;
@@ -255,7 +244,7 @@ header .bar-title::before {
   display: none;
 }
 
-.main, .main-content {
+main, .main-content {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -460,11 +449,18 @@ ul li:hover .info {
   padding: 20px;
 }
 
-header {
-  position: sticky;
-  opacity: 1;
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  margin: 0;
   z-index: 2;
-  top: 0px;
 }
 
 .page-title {
@@ -580,7 +576,9 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 15px;
   height: 100%;
+  margin: 0 auto;
 }
 
 .modal-content {
@@ -612,20 +610,26 @@ header {
   width: 100%;
   padding-top: 20px;
 }
-.modal-content input {
-  text-align: center;
+.modal-content input, .modal-content select {
   color: orangered;
   padding: 5px 15px;
   border-radius: 5px;
   width: 100%;
 }
-.modal-content input:focus {
+.modal-content input:focus, .modal-content select:focus {
   background: #ffdacc;
   outline-color: orangered;
 }
+.modal-content input::-moz-placeholder, .modal-content select::-moz-placeholder {
+  color: black;
+  opacity: 0.5;
+}
+.modal-content input::placeholder, .modal-content select::placeholder {
+  color: black;
+  opacity: 0.5;
+}
 .modal-content select {
   color: black;
-  width: 100%;
 }
 .modal-content button {
   padding: 0.4rem 1rem;
