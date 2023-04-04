@@ -74,17 +74,98 @@
 	------------------------------------------------------------------------
 	-->
 	<main class="main-content">
-		<h2 class="subtitle page-title"><span>Courses et stages</span></h2>
+		<h2 class="subtitle page-title"><span>2023</span></h2>
 
+	<!-- start modal form -->
+
+		<div class="modal fade" tabindex="-1" role="dialog" id="inscription-form"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- change color title -->
+					<h5 class="modal-title">Pré-inscription</h5>
+					<button type="button" class="close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<span class="icon close" aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="page.php" method="post">
+						<label for="firstName">Prénom
+						<input
+							type="text"
+							id="firstName"
+							name="firstName"
+							placeholder="ex : Kilian"
+							required
+							></label>
+
+						<label for="lastName">Nom
+						<input
+							type="text"
+							id="lastName"
+							name="lastName"
+							required
+							placeholder="ex : Bron"
+							></label>
+
+						<label for="email">E-mail
+						<input
+							type="email"
+							name="email"
+							required
+							id="email"
+							placeholder="ex : kilian.bron@example.com"
+							></label>
+
+						<label for="tel">Numéro de téléphone
+						<input
+							type="tel" 
+							name="tel" 
+							required 
+							id="tel" 
+							minlength="10" 
+							maxlength="10"
+							placeholder="ex : 0123456789"
+							></label>
+						<label for="choice">Je souhaite me pré-inscrire pour :
+							<select
+								name="choice" 
+								required 
+								id="choice"
+								style="color:gray"
+								>
+								<option value="" selected>--Choisis un évènement--</option>
+								<option value="megavalanche">Megavalanche</option>
+								<option value="monts-arree">Roch' des Monts d'Arrée</option>
+								<option value="mountain-hell">Mountain of Hell</option>
+								<option value="bignan">Enduro de Bignan</option>
+								<option value="stage">Stage de Saint-Goueno</option>
+							</select>
+						</label>
+
+							<div class="modal-footer">
+								<button	
+								type="button" 
+								class="close" 
+								data-bs-dismiss="modal"
+								aria-label="Close"
+								>Annuler</button>
+								<button type="submit">Envoyer</button>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal -->
 
 		<section class="event">
 			<h4 class="event-title">Megavalanche</h4>
 			<div class="event-article">
 				<article class="event-texte">
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
+					<p>La Megavalanche de l’Alpe d’Huez est la plus mythique et incontournable course d’Enduro Mass-Start  au monde !</p>
 				</article>
 				<aside class="event-info">
 					<figure>
@@ -93,96 +174,9 @@
 						<figcaption>
 							<p>Date : 3 - 9 juillet 2023</p>
 							<address>Alpe d'Huez</address>
-
-
 							<!-- add button to open a modal and add a form in the modal for each event -->
 							<button type="button" class="btn modal-access" data-bs-toggle="modal"
 								data-bs-target="#inscription-form">Pré-inscriptions</button>
-							<div class="modal fade" tabindex="-1" role="dialog" id="inscription-form"
-								aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<!-- change color title -->
-											<h5 class="modal-title">Pré-inscription</h5>
-											<button type="button" class="close" data-bs-dismiss="modal"
-												aria-label="Close">
-												<span class="icon close" aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="page.php" method="post">
-												<label for="firstName">Prénom
-												<input
-													type="text"
-													id="firstName"
-													name="firstName"
-													placeholder="ex : Kilian"
-													required
-													></label>
-				
-												<label for="lastName">Nom
-												<input
-													type="text"
-													id="lastName"
-													name="lastName"
-													required
-													placeholder="ex : Bron"
-													></label>
-				
-												<label for="email">E-mail
-												<input
-													type="email"
-													name="email"
-													required
-													id="email"
-													placeholder="ex : kilian.bron@example.com"
-													></label>
-
-												<label for="tel">Numéro de téléphone
-												<input
-													type="tel" 
-													name="tel" 
-													required 
-													id="tel" 
-													minlength="10" 
-													maxlength="10"
-													placeholder="ex : 0123456789"
-													></label>
-												<label for="choice">Je souhaite me pré-inscrire pour :
-													<select
-														name="choice" 
-														required 
-														id="choice"
-														style="color:gray"
-														>
-														<option value="" selected>--Choisis un évènement--</option>
-														<option value="megavalanche">Megavalanche</option>
-														<option value="monts-arree">Roch' des Monts d'Arrée</option>
-														<option value="mountain-hell">Mountain of Hell</option>
-														<option value="bignan">Enduro de Bignan</option>
-														<option value="stage">Stage de Saint-Goueno</option>
-													</select>
-												</label>
-
-													<div class="modal-footer">
-														<button	
-														type="button" 
-														class="close" 
-														data-bs-dismiss="modal"
-														aria-label="Close"
-														>Annuler</button>
-														<button type="submit">Envoyer</button>
-													</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- end modal -->
-
-
-
 						</figcaption>
 					</figure>
 				</aside>
@@ -193,17 +187,20 @@
 			<h4 class="event-title">Roch' des Monts d'Arrée</h4>
 			<div class="event-article">
 				<article class="event-texte">
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-					<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
+					<p>Le rendez-vous Breton du VTT. 
+					Randos et Raids VTT tout au long d'un week-end. 
+					Salon des marques, des shop et des équipementiers 100% vélo. 
+					Un week-end de convivialité au cœur de la Bretagne.</p>
 				</article>
 				<aside class="event-info">
 					<figure>
-						<img src="images/join2.jpg" alt="">
+						<img src="https://vttenfinistere.fr/wp-content/uploads/2021/01/logo-Roch-des-monts-darree-700x577.png" alt="roch">
 						<figcaption>
 							<p>Date: 9 et 10 septembre 2023</p>
-							<address>Dtade municipal Corentin Tymen de HUELGOAT</address>
+							<address>Stade municipal Corentin Tymen de HUELGOAT</address>
+							<!-- add button to open a modal and add a form in the modal for each event -->
+							<button type="button" class="btn modal-access" data-bs-toggle="modal"
+							data-bs-target="#inscription-form">Pré-inscriptions</button>
 						</figcaption>
 					</figure>
 				</aside>
@@ -214,26 +211,23 @@
 			<h4 class="event-title">Mountain of Hell</h4>
 
 			<article class="event-texte">
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
+				<p>La MOH c'est 3 jours intenses de course VTT. 
+					Des reconnaissances de parcours, une manche de qualification. 
+					Une finale et une ambiance unique.</p>
 			</article>
 			<aside class="event-info">
-				<figcaption>
-					<p>Date : 3 - 9 juillet 2023</p>
-					<address>Alpe d'Huez</address>
-
-
-					<!-- add button to open a modal and add a form in the modal for each event -->
-					<button type="button" class="btn modal-access" data-bs-toggle="modal"
-						data-bs-target="#inscription-form">Pré-inscriptions</button>
-					
-
-
-
-
-				</figcaption>
+				<figure>
+					<img src="https://woody.cloudly.space/app/uploads/les-deux-alpes/2022/12/thumbs/Affiche-MOH-2023-640x905.jpg" alt="moh">
+					<figcaption>
+						<p>Date : 23 - 25 juin 2023</p>
+						<address>Les Deux Aples</address>
+	
+						<!-- add button to open a modal and add a form in the modal for each event -->
+						<button type="button" class="btn modal-access" data-bs-toggle="modal"
+							data-bs-target="#inscription-form">Pré-inscriptions</button>
+						
+					</figcaption>
+				</figure>
 			</aside>
 		</section>
 
@@ -241,31 +235,22 @@
 			<h4 class="event-title">Enduro de Bignan</h4>
 
 			<article class="event-texte">
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
-				<p>kezfbkze gfckerhg lreg b hkeghjrelg,vhlrevghlertgh,vlrtghv,</p>
+				<p>6 spéciales chrono variées et des bonus : parfois technique, parfois physique et bien sur de l'aérien.
+				Pas envie de chrono ?!?! Essaie le mode randuro. Reco uniquement le matin du parcours.</p>
 			</article>
 			<aside class="event-info">
 				<figure>
-					<!-- <img src="" alt=""> -->
-					<figcaption>ezfgjlhezglze</figcaption>
+					<img src="https://www.ourouler.fr/upload/pistes/logo/bikepark-crazy-wood-vtt-bignan-63677557a320a.png" alt="crazywoot vtt">
+					<figcaption>
+						<p>Date : 2 avril 2023</p>
+						<address>Crazy Wood VTT - Bignan</address>
+						<!-- add button to open a modal and add a form in the modal for each event -->
+						<button type="button" class="btn modal-access" data-bs-toggle="modal"
+						data-bs-target="#inscription-form">Pré-inscriptions</button>
+					</figcaption>
 				</figure>
 			</aside>
 		</section>
-
-
-
-
-
-
-		<section class="type-event">
-			<article class="event">
-				<h4 class="event-title">Saint-Goueno</h4>
-			</article>
-		</section>
-
-
 	</main>
 
 

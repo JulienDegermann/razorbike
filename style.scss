@@ -400,8 +400,8 @@ ul { // psuedo-links at the bottom of index.html
                     }
                     img,
                     iframe {
-                        width: 90%;
-                        margin: 1%;
+                        // width: 90%;
+                        // margin: 1%;
                         border-radius: 20px;
                         @media screen and (min-width: 500px) {
                             width: 60%;                            
@@ -466,7 +466,8 @@ ul { // psuedo-links at the bottom of index.html
     width: 90%;
     gap: 10px;
     margin: 20px auto;
-    box-shadow: 2px 2px red 2px;
+    border: white 2px solid;
+    border-radius: 5px;
 }
 
 .event:nth-child(odd) .event-article {
@@ -482,32 +483,38 @@ ul { // psuedo-links at the bottom of index.html
 }
 
 .event-title { // title
+    @include flex(row, center, center);
     font-weight: bold;
     font-size: 1.1rem;
+    background: white;
+    color: $orange;
+    width: 100%;
+    height: 2rem;
 }
 
 
-.event-text { // article text
+.event-texte { // article text
     @include flex(row, center, center);
-    flex: 2;
-    font-style: italic;
-    border: gray 1px solid;
     border-radius: 5px;
-    background: white;
-    color: black;
-    background: rgba(255, 255, 255, .9);
+    color: white;
+    width: 90%;
+    margin: auto;    
     p {
         text-align: justify;
     }
 }
 .event-info { // article info : img + form + date + address
     @include flex(row, center, flex-start);
-    flex: 1;
     figure {
         @include flex(column, center, center);
-        width: 50%;
+        width: 90%;
+        margin: 35px;
         img {
+            background-color: white;
             width: 100%;
+            border-radius: 10px;
+            margin: 5px;
+            object-fit: cover;
         }
     }
 }

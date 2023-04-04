@@ -432,8 +432,6 @@ ul li .pseudo-modal .info figcaption * a {
 }
 ul li .pseudo-modal .info img,
 ul li .pseudo-modal .info iframe {
-  width: 90%;
-  margin: 1%;
   border-radius: 20px;
 }
 @media screen and (min-width: 500px) {
@@ -495,7 +493,8 @@ ul li:hover .info {
   width: 90%;
   gap: 10px;
   margin: 20px auto;
-  box-shadow: 2px 2px red 2px;
+  border: white 2px solid;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -517,24 +516,29 @@ ul li:hover .info {
 }
 
 .event-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.event-text {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex: 2;
-  font-style: italic;
-  border: gray 1px solid;
-  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
   background: white;
-  color: black;
-  background: rgba(255, 255, 255, 0.9);
+  color: orangered;
+  width: 100%;
+  height: 2rem;
 }
-.event-text p {
+
+.event-texte {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white;
+  width: 90%;
+  margin: auto;
+}
+.event-texte p {
   text-align: justify;
 }
 
@@ -543,17 +547,22 @@ ul li:hover .info {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  flex: 1;
 }
 .event-info figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 90%;
+  margin: 35px;
 }
 .event-info figure img {
+  background-color: white;
   width: 100%;
+  border-radius: 10px;
+  margin: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .modal-access {
