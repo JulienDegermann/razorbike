@@ -8,33 +8,6 @@ MIXINS / KEYFRAMES / INCLUDES / VARIABLES
 }
 
 /*
-@keyframes rotate {
-from {
-    transform: translateX(-200%);
-    transform: rorate(0deg);
-}
-to{
-    transform: rotate(45deg);
-    transform: translateX(200%);
-}
-}
-@keyframes left-right {
-    from { transform: translateX(-200%), rotate(0deg);
-    }
-    to {
-        transform: translateX(200%), rotate(45deg);
-    }
-}
-*/
-@keyframes move-down {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(100%);
-  }
-}
-/*
 ------------------------------------------------------ 
 VISIBILITY
 ------------------------------------------------------ 
@@ -132,7 +105,7 @@ header .main-title, header .bar-title {
 }
 @media screen and (min-width: 992px) {
   header .main-title, header .bar-title {
-    bottom: -15%;
+    bottom: -10%;
   }
 }
 header .main-title::before, header .bar-title::before {
@@ -290,6 +263,10 @@ main, .main-content {
 }
 
 .location {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 90%;
   margin: 5% auto;
@@ -310,6 +287,10 @@ main, .main-content {
 }
 
 .subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   position: relative;
   font-family: "Tilt Warp", cursive;
   font-size: 3.3rem;
@@ -324,7 +305,6 @@ main, .main-content {
 }
 .subtitle span {
   padding: 1% 2%;
-  animation: move-down 0.25s 0.25s linear;
   margin-left: 2%;
   margin-right: 2%;
 }
@@ -337,35 +317,13 @@ main, .main-content {
 }
 @media screen and (min-width: 480px) {
   .subtitle span {
+    font-size: 5rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .subtitle span {
     font-size: 6rem;
-    line-height: 0.9;
-  }
-}
-@media screen and (min-width: 650px) {
-  .subtitle span {
-    font-size: 8rem;
-    line-height: 0.9;
-  }
-}
-@media screen and (min-width: 992px) {
-  .subtitle span {
-    font-size: 8rem;
-    line-height: 0.9;
-  }
-}
-
-.location span,
-.subtitle span { /* Titles come from top transition */
-  position: absolute;
-  width: 100%;
-  bottom: 100%;
-  left: 0;
-  animation-fill-mode: forwards;
-}
-@media screen and (min-width: 992px) {
-  .location span,
-  .subtitle span {
-    bottom: 120%;
+    line-height: 0.8;
   }
 }
 
@@ -431,6 +389,11 @@ ul li .pseudo-modal {
   z-index: -1;
   transition: z-index 1s linear;
 }
+@media screen and (min-width: 360px) {
+  ul li .pseudo-modal {
+    width: 70%;
+  }
+}
 @media screen and (min-width: 992px) {
   ul li .pseudo-modal {
     width: 60%;
@@ -452,7 +415,7 @@ ul li .pseudo-modal .info {
   z-index: -1;
   transition: bottom linear 0.5s, z-index linear 5s 5s; /* outcome transition */
 }
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 650px) {
   ul li .pseudo-modal .info {
     display: flex;
     flex-direction: row;
@@ -484,16 +447,24 @@ ul li .pseudo-modal .info figcaption * {
 }
 ul li .pseudo-modal .info figcaption * a {
   text-decoration: initial;
-  color: initial;
+  color: orangered;
+}
+ul li .pseudo-modal .info figcaption * a:hover {
+  text-decoration: underline;
 }
 ul li .pseudo-modal .info img {
   width: 70%;
   margin: 1%;
   border-radius: 20px;
 }
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 450px) {
   ul li .pseudo-modal .info img {
-    width: 60%;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 50px) {
+  ul li .pseudo-modal .info img {
+    width: 50%;
   }
 }
 @media screen and (min-width: 992px) {

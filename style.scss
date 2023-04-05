@@ -25,32 +25,7 @@ $orange: orangered;
     justify-content: $justify;
     align-items: $align;
 }
-/*
-@keyframes rotate {
-from {
-    transform: translateX(-200%);
-    transform: rorate(0deg);
-}
-to{
-    transform: rotate(45deg);
-    transform: translateX(200%);
-}
-}
-@keyframes left-right {
-    from { transform: translateX(-200%), rotate(0deg);
-    }
-    to {
-        transform: translateX(200%), rotate(45deg);
-    }
-}
-*/
-@keyframes move-down {
-    from { transform: translateY(0);
-    }
-    to {
-        transform: translateY(100%);
-    }
-}
+
 /*
 ------------------------------------------------------ 
 VISIBILITY
@@ -139,7 +114,7 @@ header .main-title {
     margin-bottom: 2.5%;
     width: 100%;
     @media screen and (min-width: 992px) {
-        bottom: -15%;
+        bottom: -10%;
     }
     &::before {
         content: '';
@@ -170,10 +145,6 @@ header .main-title {
     right: 10px;
     padding: 0;
     border: none;
-    // @media screen and (min-width: 300px) {
-    //     top: 1%;
-    //     right: 5%;
-    // }
     &:focus {
         box-shadow: none;
     }
@@ -279,6 +250,7 @@ main {
     height: 50%;
 }
 .location {
+    @include flex(row, center, center);
     position: relative;
     width: 90%;
     margin: 5% auto;
@@ -297,6 +269,7 @@ main {
 }
 
 .subtitle {
+    @include flex(row, center, center);
     position: relative;
     font-family: 'Tilt Warp', cursive; 
     font-size: 3.3rem;
@@ -310,7 +283,6 @@ main {
     height: 60%;
     span {
         padding: 1% 2%;
-        animation: move-down .25s .25s linear ;
         margin-left: 2%;
         margin-right: 2%;
         @media screen and (min-width: 370px) {
@@ -319,33 +291,14 @@ main {
             font-size: 4.5rem;
         }
         @media screen and (min-width: 480px) {
+            font-size: 5rem;
+        }
+        @media screen and (min-width: 600px) {
             font-size: 6rem;
-            line-height: .9;;
-        }
-        @media screen and (min-width: 650px) {
-            font-size: 8rem;
-            line-height: .9;;
-        }
-        @media screen and (min-width: 992px) {
-            font-size: 8rem;
-            line-height: .9;;
+            line-height: .8;
         }
     }
 }
-
-.location span,
-.subtitle span { /* Titles come from top transition */
-    position: absolute;
-    width: 100%;
-    bottom: 100%;
-    left: 0;
-    animation-fill-mode: forwards;
-    @media screen and (min-width: 992px) {
-        bottom: 120%;
-    }
-}
-
-
 ul { // psuedo-links at the bottom of index.html
         @include flex(row, center, center);
         width: 90%;
@@ -394,6 +347,7 @@ ul { // psuedo-links at the bottom of index.html
                 z-index: -1;
                 transition: z-index 1s linear;
                 @media screen and (min-width: 360px) {
+                    width: 70%;
                 }
                 @media screen and (min-width: 992px) {
                     width: 60%;
@@ -410,7 +364,7 @@ ul { // psuedo-links at the bottom of index.html
                     margin: 0;
                     z-index: -1;
                     transition: bottom linear .5s, z-index linear 5s 5s; /* outcome transition */
-                    @media screen and (min-width: 450px) {
+                    @media screen and (min-width: 650px) {
                         @include flex(row, space-around, center);
                     }
                     @media screen and (min-width: 992px) {
@@ -429,15 +383,21 @@ ul { // psuedo-links at the bottom of index.html
                         }
                         a {
                             text-decoration: initial;
-                            color: initial;
+                            color: $orange;
+                            &:hover {
+                                text-decoration: underline;
+                            }
                         }
                     }
                     img {
                         width: 70%;
                         margin: 1%;
                         border-radius: 20px;
-                        @media screen and (min-width: 500px) {
-                            width: 60%;                            
+                        @media screen and (min-width: 450px) {
+                            width: 40%;                            
+                        }
+                        @media screen and (min-width: 50px) {
+                            width: 50%;                            
                         }
                         @media screen and (min-width: 992px) {
                             width: 40%;                            
